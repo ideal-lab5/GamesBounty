@@ -1,5 +1,4 @@
-# Decentralized Web3 Event Clock
-###### Autonomous Worlds on Polkadot
+# Autonomous Worlds and Conditional Access Control on Substrate
 
 - **Team Name:** Ideal Labs and Chainsafe Systems
 - **Funding Details:**
@@ -13,24 +12,23 @@
 
 ### Please describe the game in a short pitch.
 
-> Disclaimer: This is not only a pitch for a game, but for a framework. The final output of this proposal will be a game, which Ideal Labs will develop in conjunction with Chainsafe Systems, however we have not yet determined an optimal concept/theme to showcase the capabilities of our framework. As such, we propopse to develop some small examples which will culminate in a larger game built with Chainsafe. 
+> Disclaimer: This is not only a pitch for a game, but for a web3 gaming framework. The final output of this proposal will be a game, which Ideal Labs will develop in collaboration with Chainsafe Systems. 
 
-While Web3 games inherit many benefits from their trustless architecture, providing players with greater control and ownership over assets, gameplay and future development, it comes at a cost. Traditional online gaming's trusted infrastructure allows for the easy injection of randomness into gameplay as well as easy multiparty interactions (i.e. coin-flipping protocols). In addition, web2 gaming infrastructure doesn't burden the player with issues such as front-running, which provides unfair advantages for dishonest players. In this proposal, we present a novel mechanism that introduces publicy verifiable on-chain randomness and timelock encryption capabilities for web3 games. 
+While Web3 games inherit many benefits from their trustless architecture, providing players with greater control and ownership over assets, gameplay and future development, it comes at a cost. Traditional online gaming's trusted infrastructure allows for the easy injection of randomness into gameplay as well as easy multiparty interactions. In addition, web2 gaming infrastructure doesn't burden the player with issues such as front-running, which provides unfair advantages for dishonest players. In this proposal, we present a novel mechanism that introduces publicy verifiable on-chain randomness and timelock encryption capabilities for web3 games. 
 
-In this proposal we introduce a mechanism that introduces new [autonomous world](https://0xparc.org/blog/autonomous-worlds) capabilities for substrate-native web3 games. Our framework intends to be used for building fully on-chain games on Substrate based chains. We also enable support for verifiable computations, allowing use cases like those describerd in [zkHunt](https://0xparc.org/blog/zk-hunt). Beyond support for verifiable computations,  we propose a mechanism that injects publicly verifiable on-chain randomness and provides efficient timelock encryption capabilities, giving games the power to be both autonomously driven and non-deterministic while retaining decentralization. This will allow for new kinds of use cases for web3 games, such as atomic asset swaps, dynamic in-game events, "endless" time-based games, autonomously driven gameplay (e.g. an on-chain simulation), and more.
+This is a proposal for an [autonomous worlds](https://0xparc.org/blog/autonomous-worlds) framework for web3 games. Autonomous worlds are fully on-chain ‘worlds’ in which all state exists on-chain without relying on external, centralized components. While generally thought of in the context of gaming, ‘autonomous worlds’ can be considered more generally as an axiomatic system where the ‘state’ of the world can be openly updated and proved by any entity (i.e. without permission, with full autonomy). It uses the Ideal Network’s “ETF post-finality gadget” (ETF-PFG) to provide publicly verifiable on-chain randomness, timelock encryption, and practical witness encryption capabilities to games deployed on-chain. It allows for usage of randomness and timelock encryption in smart contracts and enables autonomously driven on-chain games (otherwise called autonomous worlds). We also introduce a relayer network which is responsible for calculating state changes offchain and providing proofs onchain. With this framework we aim to provide new capabilities to Substrate-native games. Similar to existing solutions such as MUD or Dojo, the framework relies on verifiable offchain computation of game states with verification of proofs and states on-chain. Our framework is intended to be extensible, allowing for many different proving systems to be leveraged, however for the time being we focus on Groth 16.
 
-We accomplish this through the Ideal network, a Substrate-based blockchain which implements a post-finality gadget (ETF-PFG) that produces a publicly verifiable randomness beacon via threshold BLS signatures and DLEQ proofs. It functions similar to BEEFY and allows for the network to provide cross-chain randomness through a relayer and light client.  Our solution will enable:
-
-- interoperable, publicly verifiable, on-chain randomness
-- efficient timelock encryption for games
-- autonomously driven, non-deterministic games
+This framework provides the following features to Substrate-based web3 games:
+- **Publicly Verifiable On-Chain Randomness**: Injection of publicly verifiable randomness into games, which can be used as input or output randomness and also forms a basis for async multiparty interactions. 
+- **Timelock Encryption**: Timelock encryption allows messages to be encrypted such that they can only be decrypted after a given amount of time, or in our case, blocks, has passed. Timelock encryption is a powerful primitive for enabling more trustless systems, where it enables more streamlined commit-reveal capabilities. In the context of gaming, it can provide front-running protection for players, time-based easter eggs and feature reveals, and generally the ability to ‘send something to the future’.
+- **Trustless Secret Sharing and Conditional Access Control Mechanisms**: We introduce a new mechanism based on async committee secret sharing, timelock encryption and Groth16 that enables a trustless “practical witness encryption” scheme. We demonstrate how this can be used in order to incentivize a relayer network to automatically update game states and for the construction of new conditional access control mechanisms for web3 systems in general.
 
 You can find the details of our proposed framework here: https://docs.google.com/document/d/1HYjl92HM-D6D3zYKfXIyvKz5PomhzIJgaPlmqFx5RN4/edit?usp=sharing
 
 
 ### Basic Gameplay Loop
 
-TODO
+TODO: Should we include the arcane assembler gameplay loop here?
 
 ### Are there any existing games that you would consider similar to your project?
 
@@ -39,7 +37,7 @@ There are several existing 'autonomous worlds' frameworks that exist, generally 
 - [mud](https://mud.dev/)
 - [xaya](https://xaya.io/)
 
-Very differently from those solutions, our solution also has the advantage of publicly verifiable on-chain randomness and timelock encryption, which will lead to more dynamic user experiences than what can be accomplished with existing solutions.
+Quite differently from those solutions, our solution also has the advantage of publicly verifiable on-chain randomness and timelock encryption, which will lead to more dynamic user experiences than what can be accomplished with existing solutions.
 
 ### Do you have a Game Design Document (GDD) for your project?
 
@@ -96,7 +94,7 @@ Yes, we have extensive experience working with Unity and in-depth knowledge buil
 - [x] Other: Highly experienced in Rust & Substrate and can develop new runtime code.
 
 ### Would you like a technical Team from Polkadot Play, to help you identify the technical requirements?
-Yes, we would. While we believe we have an excellent understanding of the technical requirements for this proposal, we would very much appreciate another look/perspective, as there undoubtedly some unknowns or things we may have overlooked. We do not have any specific pain points at the moment. In addition, we would appreciate technical expertise in reviewing our game logic and implementation, as we have not developed a production-ready ink! based game before.
+Yes, we would. While we believe we have an excellent understanding of the technical requirements for this proposal, we would very much appreciate another look/perspective, as there undoubtedly some unknowns or things we may have overlooked. We would also appreciate insights into the direction of our tools and APIs to ensure that they are reasonable and serve as useful interfaces for developers.
 
 ## 4. The Team
 
@@ -118,7 +116,7 @@ Carlos is a Co-Founder and Blockchain Engineer at Ideal Labs. His career has spa
 
 #### Tony Riemer
 
-Tony is a co-founder of Ideal Labs, where he is the driving force behind protocol research and development. He studied mathematics at the University of Wisconsin, after which he gained experience working as a software engineer in the Fintech space, where he developed cutting edge solutions for Fannie Mae, Capital One, and others. In February 2023, he graduated from the PBA in Buenos Aires alongside the other co-founders of Ideal Labs. Since 2022 he has been fully immersed in everything web3. To date, he has successfully completed several web3 foundation grants and is committed to completing the vision of the "Ideal Network". He has a passion for mathematics, innovation, coffee, and cats. 
+Tony is a co-founder of Ideal Labs, where he is the driving force behind protocol research and development at Ideal Labs. He studied mathematics at the University of Wisconsin, after which he gained experience working as a software engineer in the Fintech space, where he developed cutting edge solutions for Fannie Mae, Capital One, and others. In February 2023, he graduated from the PBA in Buenos Aires alongside the other co-founders of Ideal Labs. Since 2022 he has been fully immersed in everything web3. To date, he has successfully completed several web3 foundation grants and is committed to completing the vision of the "Ideal Network". He has a passion for mathematics, innovation, coffee, and cats. 
 
 ### Team Code Repos
 All repos can be found under https://github.com/ideal-lab5
@@ -147,22 +145,19 @@ The Ideal Network is a substrate-based chain with a novel consensus mechanism (a
 
 The Ideal Labs github is here: https://github.com/ideal-lab5 where you can find the repositories we will use in developing this proposal, including the [ETF repo](https://github.com/ideal-lab5/etf), [etf.js](https://github.com/ideal-lab5/etf.js), and [etf-sdk](https://github.com/ideal-lab5/etf-sdk).
 
-Specificially in relation to the milestones you will encounter below, we have already begun development of milestone 1 (an experimental "lite" version). You can find the 'beacon' component here https://github.com/ideal-lab5/beacon. We have also begun modifying our runtime to support this. In addition, we implemented a basic version of rock-paper-scissors: https://github.com/ideal-lab5/rock-paper-scissors/. We have deployed the contract and UI to a testnet, which you can play at: https://rps.idealabs.network (if it doesn't work let Tony know and he'll resolve it).
+Specificially in relation to the milestones you will encounter below, we have already begun development of milestone 1 (an experimental "lite" version). You can find the 'beacon' component here https://github.com/ideal-lab5/beacon. We have also begun modifying our runtime to support this. In addition, we implemented a basic version of rock-paper-scissors: https://github.com/ideal-lab5/rock-paper-scissors/.
 
 You can read more about how it works at: https://medium.com/@ideal_labs/the-etf-post-finality-gadget-1dd6d7f12034
-We have previously built some proof-of-concepts on the Ideal Network, such as: https://ideallabs.substack.com/p/p2p-semi-autonomous-games-part-3?utm_source=profile&utm_medium=reader2
+We have previously built some proof-of-concept games on the Ideal Network, such as: https://ideallabs.substack.com/p/p2p-semi-autonomous-games-part-3?utm_source=profile&utm_medium=reader2
 
 ### What are the key milestones for your game's development, and what are the estimated completion dates for each?
 
-There are three major milestones to the proposal.
+![overview](../docs/milestones-overview.png)
 
-![components-diagram](../docs/components.png)
-
-We expect each of the milestones to last 4 weeks.
 
 **Milestone 1:** Develop a **beacon contract** and centralized **relayer component**.
 
-  This milestone delivers the core of the underlying infrastructure that enables our solution. Similar to BEEFY, the [ETF Post-Finality Gadget](https://medium.com/@ideal_labs/the-etf-post-finality-gadget-1dd6d7f12034)  works by broadcasting a stream of justifications that can be subscribed to. This milestone implements a centralized relayer component that relays ETF justifications to a smart contract light client called a 'beacon contract'. The relayer is responsible for interpolating threshold signatures, aggregating proofs, and sending transactions to a smart contract. This forms the basis for enabling randomness and timelock encryption capabilities for the game contract and for enabling autonomously driven experiences. We demonstrate how a game can use a beacon by implementing a simple PvE rock-paper-scissors game. We also will develop a pallet version of the beacon along with a chain extension, which we will use to re-implement the way the RPS game gets randomness. 
+  This milestone delivers the core of the underlying infrastructure that enables our solution. Similar to BEEFY, the [ETF Post-Finality Gadget](https://medium.com/@ideal_labs/the-etf-post-finality-gadget-1dd6d7f12034)  works by broadcasting a stream of justifications that can be subscribed to. This milestone implements a centralized relayer component that relays ETF justifications to a smart contract light client called a 'beacon contract'. The relayer is responsible for interpolating threshold signatures, aggregating proofs, and sending transactions to a smart contract. This forms the basis for enabling randomness and timelock encryption capabilities for the game contract and for enabling autonomously driven experiences. We demonstrate how a game can use a beacon by implementing a simple PvE rock-paper-scissors game. We also will develop a pallet version of the beacon along with a chain extension, which we will use to re-implement the way the RPS game gets randomness.
 
   ![](../docs/milestone1.png)
 
@@ -173,22 +168,43 @@ We expect each of the milestones to last 4 weeks.
 
 **Milestone 2:** Timelocked Transactions and Verifiable Computation
 
-This milestone takes a lot of inspiration from existing 'autonomous worlds' approaches, especially that taken by [dojo](https://www.dojoengine.org/en/). In this milestone we develop a modular and extensible framework for building fully on-chain web3 games on Polkdaot. The core idea behind building a framework for fully on-chain games driven by verifiable randomness, in the sense of [autonomous worlds](https://0xparc.org/blog/autonomous-worlds), is that:
-1. The ETF justifications are **diegetic** to the game, and their introduction rule into games is open, meaning anyone can introduce a valid signature and proof to a beacon. The game is 'driven' by the new signatures recieved by a beacon, but anybody can theoretically supply valid values to it. This ensures the world retains autonomy.
-2. Game states should be calculated offchain using *some* type of verifiable computation scheme, with the updated state being verifiable on-chain.
-3. The verifiable randomness beacon enables async coin-flip protocols within this framework. In another sense, this can be thought of 'the ability to secretly schedule something now and execute it later'. Async and anonymous players can participate in a synchronous protocol in this way, allowing for new types of 'multiparty interactions' that don't require commit-reveal patterns in the traditional sense. 
+The goal of milestone to is to enable a mechanism where the Ideal network is capable of sharing secrets between async and anonymous participants. That is, we propose an MPC solution that uses zkSNARKS and our threshold BLS signature scheme to introduce an on-chain conditional access control mechanism wherein 'data owners' can define on-chain conditions that gate access to their data. This is conceptually similar to approaches taken by existing solutions, such as [dojo](https://www.dojoengine.org/en/). The mechanism that we are proposing could provide value beyond gaming, however, we see it as a tremendous value in the context of web3 gaming as well. Similar to existing frameworks, this mechanism also forms the basis for providing automatic or game state updates as well.
 
-To accomplish this, we introduce a new pallet to the network, a 'relayer' pallet. 
+![](../docs/milestone2.png)
 
-By using timelock encryption, players can encrypt their decisions for the future and hand them off to a relayer. Once a relayer interpolates a signature, if can decrypt the transaction and dispatch it. Since the payload is timelock encrypted, relayers do not know the transaction beforehand, making it very difficult for them to perform MEV extraction. we can allow the system to be require less trust compared to similar solutions.
+We intend to use [circom](https://github.com/iden3/circom), based on work done by [bright](https://brightinventions.pl/blog/zk-snarks-in-substrate-part-1/), to enable offchain computation which is later verifiable on-chain.
 
- The aims of this milestone are twofold. Firstly, we want to allow any number of async, potentially anonymous parties to interact in a protocol together. This is an important capability for web3 games, as it allows players 
+We introduce a new pallet to our runtime that manages and incentivizes participants (likely the network relayers, described in milestone (1)) to verify proofs, execute computations, and provide proofs to games thus updating the game state. Our mechanism leverages timelock encryption and asynchronous complete secret sharing in order to accomplish this (these already exist within the Ideal network), with the general idea being:
 
- [circom](https://github.com/iden3/circom), based on work done by [bright](https://brightinventions.pl/blog/zk-snarks-in-substrate-part-1/), to enable offchain computation which is later verifiable on-chain. The outcome of this milestone is a modification of our rock-paper-scissors game, in which we enable PvP competitive games which are verified through a circom circuit. Our `Relayer` nodes will be made responsible for calculating game states and proofs, similar to Dojo's 'katana'. This milestone also delivers a new pallet that introduces a way from consumers to incentivize (pay) relayers to produce aggregated signatures for their games. This is a 'randomness market'.
+1. Alice has some secret data that she wants to make available to whoever meets some on-chain condition. She doesn't care who it is. So she encrypts her data with a stream cipher and then prepares a 'resharing' of her secret key to the network validator set. She creates a new onchain asset class associated with her public paramters.
+2. Bob purchases an NFT minted from Alice's asset class. He then uses the public paramters to create a proof (zkSNARK) that satisfies Alice's on-chain condition. In practice, this condition will be: prove you own the NFT, though in theory it could be anything.
+3. Bob timelock encrypts his proof for a specific future block and submits the payload to the Ideal network. 
+> a quick aside: the reason timelock encryption is used is to ensure that network authorities produce signatures for Bob at the same time. We don't want Bob to have to trawl through signatures of different blocks to try to identify the valid ones. We also don't want validators to be able to cherry-pick which proofs they verify. By forcing validators to run timelock decryption, they are incentivized to verify it due to the extra work involved in decryption.
+4. We assume the beacon pallet is implemented in the network. Network validators watch incoming blocks from the beacon pallet and then are incentivized to decrypt payloads, verify them, and produce valid signatures for Bob. They do this in a way that lets Bob easily identify the signatures he needs to interpolate as well as ensure that only Bob can use the resulting signature to decrypt the Payload.
+
+In the context of Web3 gaming, we want process game states offchain and prove the computation on-chain. We can use the same approach that we described above with a little twist. Alice's payload, in this case, would in fact be some type of reward, likely a monetary one, or rather would give the executor access to account in which that reward exists. We use this idea to incentivize relayers to udpate game states. 
+
+> Q: Should we go this far right now? this piece should probably be its own milestone, making this a 4 milestone proposal, though we could potentially trim away milestone 1 since it's already partially started. I feel that automatically driven contracts are not really necessary unless we want to create an on-chain simulation.
+
+That is, from a relayer perspective, the goal would be to be the node who acts as 'Bob' in the scheme above, where they calcualate a proof (probably based on data stored in a contract's storage) in order to get a final signature. They use this signature as a secret key to get access to an account that contains a reward. This is the reward they receive for updating the game state.
+
+This practical witness encryption capability has great potential to enable interesting new paradigms for web3 games. For example:
+- It could enable conditional access to in-game assets, perhaps certain items are unavailable to a type of character or a only usable if they have reached a certain level.
+- It could ensure players can only unlock new levels or achievements if they can prove they finished the previous ones. 
+- It enables secure sharing of secrets between players, including trading of in-game assets. 
 
 
-**Milestone 3**: Implement the game interface and assets
+> Needs work
+Finally, the outcome of this milestone is a modification of our rock-paper-scissors game, in which we enable a PvP competitive RPS game. Players will be able to challenge each other and play on-demand, where beforehand they agree on the block schedule when games must occur.  
 
+
+**Milestone 3**: Re-Implement the game interface and assets
+
+![](../docs/milestone3.png)
+
+The final milestone re-imagines a game previously implemented using the Dojo framework and implements it as a substrate-native game instead. [Arcane Assembly](https://github.com/ArcaneAssemblers/spellcrafter) is a single player time and resource management survival game. You play as a mage trying to craft the most powerful spell the world has ever seen. Spells are crafted by sourcing and adding rare components from across the world.
+
+First we reimplement the contracts (for example, [this one](https://github.com/ArcaneAssemblers/spellcrafter/blob/main/contracts/src/systems.cairo#L69C14-L69C15)) as ink! contracts, we also use the Ideal network's randomness within the game, for example replacing [this line](https://github.com/ArcaneAssemblers/spellcrafter/blob/cfe1cc3f45e434da4715177bca1d674214959b61/contracts/src/systems.cairo#L69C14-L69C15) with a call to get randomness from a beacon pallet instead.
 
 ### Are you intending to raise more funds?
 There are no plans to raise additional funds right now, but we are open to discussing this in the future. The community reception of the game will be a significant factor in determining whether we will seek additional funding. Successful completion of proof-of-concept for the game mechanic will likely lead to further development. Crowd-funding is the most suitable funding model for the future.
@@ -239,8 +255,12 @@ FTE = 40 hr/week
 | **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
 | **0d.** | Platform | Provide a detailed description of the game's platform compatibility and the infrastructure setup required to host and run the game, including supported operating systems, hardware requirements, and necessary backend services. |
 | 0e. | Article | We will publish an **article**/workshop that explains [...] (what was done/achieved as part of the games bounty). (Content, language, and medium should reflect your target audience described above.) |
-| 1. | | |
-| 2. | | |
+| 1. | Library: Circom support in etf-sdk and etf.js | We develop documentation and tooling that allows users to perform AES-GCM encryption and prepare resharings of their secrets from rust and javascript by adding additional wasm bindings to our etf-sdk library. |
+| 2. | Substrate Runtime: pallet-witness-encryption (part 1) | We develop a new pallet for enabling practical on-chain witness encryption. The pallet functions as described above, where users encode public parameters for circuits and resharings of the associated secret in a pallet, which is then associated with a new on-chain asset class. We adapt this from the work done by [bright](https://brightinventions.pl/blog/zk-snarks-in-substrate-part-1/). Note: This intermediate step does not modify validator logic yet. |
+| 3. | Substrate Runtime: pallet-witness-encryption (part 2) | We modify the pallet to include an offchain worker that uses the latest signatures from the beacon pallet and uses the value to decrypt timelocked payloads and verify them, before creating a threshold BLS signature and storing it in runtime storage. |
+| 4. | Substrate Module: pallet-scheduler | We implement a relayer incentive layer as a modified version of the scheduler pallet as discussed above. |
+| 5. | | |
+| 6. | | |
 ### Milestone 3: Game Development
 
 - **Estimated Duration:** 4 weeks
@@ -255,9 +275,10 @@ FTE = 40 hr/week
 | **0d.** | Platform | Provide a detailed description of the game's platform compatibility and the infrastructure setup required to host and run the game, including supported operating systems, hardware requirements, and necessary backend services. |
 | 0e. | Article | We will publish an **article**/workshop that explains [...] (what was done/achieved as part of the games bounty). (Content, language, and medium should reflect your target audience described above.) |
 | 1. | GDD: R & D | We perform research and complete the GDD alongside Chainsafe. We have already begun work on the GDD, however at this point it contains ideas that lead to the formulation of this framework and an initial idea for a game, though we will modify it during this deliverable. This task also includes the development of click-dummies that will be useful for the rest of the game development. |
-| 2. | BSA: ... | We will create an Blockchain Solution Architecture (BSA) showing the proper interaction of the game with the Blockchain elements. This will mostly be known as an output of milestone 2, however we will formalize the documentation here. |
-| 3. | Frontend module: Browser-based game interface | We will create a user interface to interact with the game. The initial version will likely be browser based, without the use of unreal or unity. We make this choice since our approach is experimental and we must should validate it at scale before developing a fully-fledged game. |
-| 4. | Asset Layer: TBD | We will create an asset layer consisting of those asset models that we determine are required as part of the research included in deliverabel (1).|
+| 2. | BSA | We will create an Blockchain Solution Architecture (BSA) showing the proper interaction of the game with the Blockchain elements. This will mostly be known as an output of milestone 2, however we will formalize the documentation here. |
+| 3. | Game Contracts Reimplementation | We reimplement the game as a series of ink! smart contracts instead of starknet contracts. We also use the Beacon pallet's randomness within the contract. |
+| 4. | | |
+| 5. | Launch and Deploy | We launch the game on the Ideal network's testnet. | 
 
 ## 7. Future Plans
 
