@@ -15,11 +15,24 @@
 
 ## :wave: Introduction
 
-As part of our commitment to promoting the Web3 gaming ecosystem in Polkadot, we offer ...
+As part of our commitment to promoting the Web3 gaming ecosystem in Polkadot, we offer tailored grants for promising game developers developing games that will eventually contribute to the overall ecosystem. In most cases, funding will be retroactive, based on several agreed-upon milestones that will require detailed planning and reporting to bounty curators. If you apply for funding your project gets into the primary check queue and can be:
+
+- Approved (the project will move to milestone agreement) 
+- Needs work (The project has been rejected with the possibility of revision)
+- Denied (The project has been rejected without the chance of revision)
+
+If the project is approved for funding, you will get a (group) of curators assigned who will be your point of contact throughout the delivery and check process of your project.
 
 ### Guidelines
 
-Anyone is welcome to apply for a games bounty grant ...
+Anyone is welcome to apply for a games bounty grant, applicants must:
+- Be transparent about any other funding related to the project for which you are applying. This includes denied, approved, and ongoing funding requests.
+- Overarching projects that have received funding from whatever source must be disclosed as well.
+- Have a multi-sig as payout address, this multi-sig must at least have three signatories.
+- Team members/studio must be stated
+- ... 
+
+This list will be updated soon.
 
 ### Project Ideas
 
@@ -95,3 +108,7 @@ The Games Bounty Program offers a simple milestone-based grant paid in DOT.
 | [Polkadot Play Website](https://polkadotplay.org) | [Polakdot Play Twitter](https://twitter.com/PlayPolkadot) | [Polkadot Wiki](https://wiki.polkadot.network/en/) |
 
 </div>
+
+## :information_source: License<!-- omit in toc -->
+
+[Apache License 2.0](LICENSE) © Web3 Foundation
