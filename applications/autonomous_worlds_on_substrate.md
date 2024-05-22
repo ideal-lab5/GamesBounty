@@ -103,7 +103,7 @@ Yes, we have extensive experience working with Unity and in-depth knowledge buil
 - [x] Other: Highly experienced in Rust & Substrate and can develop new runtime code.
 
 ### Would you like a technical Team from Polkadot Play, to help you identify the technical requirements?
-Yes, we would. While we believe we have an excellent understanding of the technical requirements for this proposal, we would very much appreciate another look/perspective, as there undoubtedly some unknowns or things we may have overlooked. We would also appreciate insights into the direction of our tools and APIs to ensure that they are reasonable and serve as useful interfaces for developers.
+Yes, we would. While we believe we have a decent understanding of the technical requirements for this proposal, we would very much appreciate another look/perspective, as there undoubtedly some unknowns or things we may have overlooked. We would also appreciate insights into the direction of our tools and APIs to ensure that they are reasonable and serve as useful interfaces for developers.
 
 ## 4. The Team
 
@@ -150,7 +150,7 @@ Specifically, we intend to heavily rely on or modify the following repositories:
 
 ### Development Status :open_book:
 
-The Ideal Network is a substrate-based chain with a novel consensus mechanism (as a post finality gadget) enabling publicly verifiable on-chain randomness and timelock encryption. Our development thus far has been exclusively funded by the web3 foundation, both through the open grants program and now as part of the Decentralized Futures initiative: https://medium.com/web3foundation/decentralized-futures-introducing-etf-network-cd8282be6143.
+The Ideal Network is a substrate-based chain which runs the "ETF Post-Finality Gadget", a fork of BEEFY enabling publicly verifiable on-chain randomness and timelock encryption. Our development thus far has been exclusively funded by the web3 foundation, both through the open grants program and now as part of the Decentralized Futures initiative: https://medium.com/web3foundation/decentralized-futures-introducing-etf-network-cd8282be6143. We recently completed our [second milestone](https://forum.polkadot.network/t/ideal-labs-x-df-milestone-2-update/8076).
 
 The Ideal Labs github is here: https://github.com/ideal-lab5 where you can find the repositories we will use in developing this proposal, including the [ETF repo](https://github.com/ideal-lab5/etf), [etf.js](https://github.com/ideal-lab5/etf.js), and [etf-sdk](https://github.com/ideal-lab5/etf-sdk).
 
@@ -181,20 +181,20 @@ We have previously built some proof-of-concept games on the Ideal Network, such 
 
 The outcome: We introduce a (basic) practical witness encryption scheme and verifiable computation capabilities through the use of Circom and our async committee secret sharing protocol. We note that this is a 'light' version of our protocol, by that meaning we do not plan to introduce a zkSNARK to prove things about the underlying blockchain state (which we plan on doing if this proves successful). We then develop a [simple game using W.E.]. 
 
-**Note**: In the future, we will leverage the Ideal network's randomness beacon to enable a decentralized, on-chain powers of tau ceremony, which is required when creating the verification keys for zkSNARKS (Groth16). This will ensure that users do not need to produce their own verification keys offchain, greatly increasing the usability of the system. This will allow any chain in the ecosystem to easily introduce zkSNARK capabilities.
+**Note**: In the future, we will investigate the potential for the Ideal network's randomness beacon to enable a decentralized, on-chain powers of tau ceremony, which is required when creating the verification keys for zkSNARKS (Groth16). This will ensure that users do not need to produce their own verification keys offchain, greatly increasing the usability of the system. This will allow any chain in the ecosystem to easily introduce zkSNARK capabilities.
 
-The goal of milestone to is to enable a mechanism where the Ideal network is capable of sharing secrets between async and anonymous participants. That is, we propose an MPC solution that uses zkSNARKS and our threshold BLS signature scheme to introduce an on-chain conditional access control mechanism wherein 'data owners' can define on-chain conditions that gate access to their data. The mechanism that we are proposing could provide value to the ecosystem as a whole, however, we see it as a tremendous value in the context of web3 gaming as well. 
+The goal of milestone to is to enable a mechanism where the Ideal network is capable of sharing secrets between async and anonymous participants. That is, we propose an MPC solution that uses zkSNARKS and our threshold BLS signature scheme to introduce an on-chain conditional access control mechanism wherein 'data owners' can define on-chain conditions that gate access to their data. The mechanism that we are proposing could provide value to the ecosystem as a whole, however, we see it as a tremendous value in the context of web3 gaming. 
 
 This practical witness encryption capability has great potential to enable interesting new paradigms for web3 games. For example:
 - It could enable conditional access to in-game assets, perhaps certain items are unavailable to a type of character or a only usable if they have reached a certain level.
 - It could ensure players can only unlock new levels or achievements if they can prove they finished the previous ones. 
-- It enables secure sharing of secrets between players, including trading of in-game assets. 
+- It enables secure sharing of secrets between players.
 
 ![](https://raw.githubusercontent.com/ideal-lab5/GamesBounty/draft/docs/milestone2.png)
 
-We intend to use [circom](https://github.com/iden3/circom), based on work done by [bright](https://brightinventions.pl/blog/zk-snarks-in-substrate-part-1/), to enable offchain computation which is later verifiable on-chain. We will use Groth16.
+We will use [circom](https://github.com/iden3/circom), based on work done by [bright](https://brightinventions.pl/blog/zk-snarks-in-substrate-part-1/), to enable offchain computation which is later verifiable on-chain. We will use Groth16 to prepare our zkSNARKS. Our long-term vision is to be able to prove on-chain conditions using circom in this way, however, we do not accomplish that as part of this proposal. The zkSNARKs that we introduce will only verify conditions that are entirely unrelated to the state of the underlying chain.
 
-We introduce a new pallet to our runtime that manages and incentivizes participants (likely the network relayers, described in milestone (1)) to verify proofs and to calculate signatures when valid proofs are provided. At a high level, the protocol is as follows:
+We introduce a new pallet to our runtime that manages and incentivizes participants (offchain workers) to verify proofs and to calculate signatures when valid proofs are provided. At a high level, the protocol is as follows:
 
 1. Alice has some secret data that she wants to make available to whoever meets some on-chain condition. She doesn't care who it is. So she encrypts her data with a stream cipher and then prepares a 'resharing' of her secret key to the network validator set. She also develop and compiles a circuit and produces valid public inputs and a verification key. She encodes the input parameters, verification key, and initial resharing of her secret on-chain.
 2. Bob is able to construct a proof that satisfies Alice's circuit. He then uses the public paramters to create a proof (zkSNARK) that satisfies Alice's on-chain condition. 
