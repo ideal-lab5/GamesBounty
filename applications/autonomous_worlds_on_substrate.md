@@ -15,14 +15,14 @@
 
 > This is not only a pitch for a game, but for enabling verifiable onchain randomness, tlock, and verifiable computations for web3 games. The final output of this proposal will be a game, which Ideal Labs will develop in collaboration with Chainsafe Systems. 
 
-**Spellcrafter** is a "spell-crafting" card game where players discover ingredients, unlock recipes, and craft new spells in a challenge to be the most powerful mage. Players encounter offchain challenges (puzzles) that must be solved in order to unlock new recipes that can be used to craft spells on-chain. This game is a re-imagining of [Arcane Assembly](https://github.com/ArcaneAssemblers/spellcrafter), a game developed with Dojo (on Starknet), as a substrate native game. In this proposal, we also introduce new capabilities for games built on Polkadot: publicly verifiable on-chain randomness, timelock encryption, verifiable computation (zkSNARKs) and practical witness encryption. In the game, players must search the web, offchain, in order to learn knowledge that they can use to unlock recipes, such as by solving a puzzle or a riddle. 
+**Spellcrafter** is a "spell-crafting" card game where players discover ingredients, unlock recipes, and craft new spells in a challenge to craft the most powerful spells. Players encounter offchain challenges (puzzles) that must be solved in order to unlock new recipes that can be used to craft spells on-chain. This game is a re-imagining of [Arcane Assembly](https://github.com/ArcaneAssemblers/spellcrafter), a game developed with Dojo (on Starknet), as a Substrate-native game. even though a game in it's own right, Spellcrafter is intended to be a used as a source of magic spells for other games that need them for their players. In this proposal, we also introduce new capabilities for games built on Polkadot: publicly verifiable on-chain randomness, timelock encryption, verifiable computation (zkSNARKs) and practical witness encryption. In the game, players must search the web, offchain, in order to learn knowledge that they can use to unlock recipes, such as by solving a puzzle or a riddle. 
 
 To enable spellcrafter on Substrate, we introduce publicly verifiable on-chain randomness, timelock encryption, and practical witness encryption capabilities to web3 gaming on Polkadot/Substrate. In collaboration with ChainSafe Gaming, Ideal Labs aims to enhance web3 gaming on Polkadot by integrating zkSNARKs via Circom and leveraging the Ideal Network's [post-finality gadget](https://medium.com/@ideal_labs/the-etf-post-finality-gadget-1dd6d7f12034), an MPC solution that enables a randomness beacon, to develop a practical witness encryption mechanism. This approach ensures fair play, enables asynchronous player coordination, and introduces proof-of-knowledge gating for in-game assets, events, or anything. Our framework uses off-chain computation with on-chain proof verification, using Groth 16, to provide new capabilities to Substrate-native games. This would not only allow for games like [zkHunt](https://0xparc.org/blog/zk-hunt) or [dark forest](https://zkga.me/) to be implemented on Substrate, but would allow for new on-chain conditional data access mechanisms to be created, such as requiring a zkSNARK of some in-game knowledge in order to proceed to the next level.
 
 **Keypoints**
 
 We are proposing:
-- A Substrate-native spell-crafting card game, **SpellCrafter**, where players 
+- A Substrate-native spell-crafting card game, **SpellCrafter**, where players discover ingredients, unlock recipes, and craft new spells in a challenge to craft the most powerful spells.
 - A framework that provides the following features to Substrate-based web3 games:
   - **Publicly Verifiable On-Chain Randomness**: Injection of publicly verifiable randomness into games, which can be used as input or output randomness and also forms a basis for async multiparty interactions. 
   - **Timelock Encryption**: Timelock encryption allows messages to be encrypted such that they can only be decrypted after a given amount of time, or in our case, blocks, has passed. Timelock encryption is a powerful primitive for enabling more trustless systems, where it enables more streamlined commit-reveal capabilities. In the context of gaming, it can provide front-running protection for players, time-based easter eggs and feature reveals, and generally the ability to ‘send something to the future’.
@@ -42,7 +42,7 @@ flowchart LR
 
 ### Are there any existing games that you would consider similar to your project?
 
-There are several existing 'autonomous worlds' frameworks that exist that enable some type of verifiable computation and/or automatic game state calcualtions and updates. Each solutions is generally targeting EVM-based blockchains, including:
+Spellcrafter exists as a Starknet implementation built with the Dojo framework. There are several existing 'autonomous worlds' frameworks that enable some type of verifiable computation and/or automatic game state calcualtions and updates. Each solutions is generally targeting EVM-based blockchains, including:
 - [dojo](https://book.dojoengine.org/)
 - [mud](https://mud.dev/)
 - [xaya](https://xaya.io/)
@@ -52,6 +52,7 @@ There are several existing 'autonomous worlds' frameworks that exist that enable
 
 The GDD is a work in progress. Once complete, it will contain the full details of the game that we will build in collaboration with Chainsafe.
 
+An example of what the GDD will look like can be found here:
 https://chainsafe.notion.site/Game-Design-Document-for-Fragments-70ad7d8efec14fa68de9f6f4e5be55f4
 
 ## 2. Game Dev Experience
@@ -61,11 +62,11 @@ https://chainsafe.notion.site/Game-Design-Document-for-Fragments-70ad7d8efec14fa
 #### Martin
 
 - **[Isonzo](https://youtu.be/GAv34SMEjMI)** 
-* Advanced Kinematic Character Controller
-* New behaviours on bots
-* Development of challenge and achievements systems
-* Game settings from scratch
-* Lead audio programming development
+  * Advanced Kinematic Character Controller
+  * New behaviours on bots
+  * Development of challenge and achievements systems
+  * Game settings from scratch
+  * Lead audio programming development
 
 #### More games we have developed:
 - **[Beat Cancer](https://www.youtube.com/watch?v=9hnLrSvW220)**
@@ -80,7 +81,7 @@ https://chainsafe.notion.site/Game-Design-Document-for-Fragments-70ad7d8efec14fa
 - **[Angrymals](https://angrymals.io/)**
 
 ### Do any of the previously mentioned games have a Web3 component?
-Block Blasterz is a web3 game that uses Etherum for its in-game currency, lootboxes, fiat-to-crypto conversion, and an NFT Marketplace. It also allows for EVM-based cross chain asset transfers with the Block Racerz game. We have been building and extending autonmous worlds on Ethereum (MUD framework) and on Starknet (Dojo Framework). 
+Block Blasterz is one of our web3 games that uses Etherum for its in-game currency, lootboxes, fiat-to-crypto conversion, and an NFT Marketplace. It also allows for EVM-based cross chain asset transfers with the Block Racerz game. Furthermore,wWe have been building and extending autonmous worlds on Ethereum (MUD framework) and on Starknet (Dojo Framework).
 
 ### Do you have experience in working with game engines, such as Unity & Unreal?
 Yes, we have extensive experience working with Unity and in-depth knowledge building blockchain SDKs for Unity. We have also worked with Unreal Engine, but not as extensively as Unity. We have experience with all aspects of game development, including game design, game mechanics, game physics, and game asset creation.
@@ -107,25 +108,21 @@ Yes, we would. While we believe we have an excellent understanding of the techni
 
 ## 4. The Team
 
-### Could you share insights about team members who are essential to your project's success? Highlight their specific skill sets and contributions to the game development. 
-
-(ordered alphabetically)
-
 #### Juan Girini
 Juan Girini is a Co-founder and Engineer at Ideal Labs, and a former FRAME Core Engineer at Parity. He holds a degree in Information Systems Engineering and is distinguished as a graduate of the Polkadot Blockchain Academy's Buenos Aires cohort with honours. With extensive experience as a web2 engineer before transitioning to web3, Juan is immersed in the development of the Ideal Network, a groundbreaking Substrate-based blockchain with a focus on pioneering novel blockchain functionalities. There's a particular emphasis on Onchain Randomness, as well as Interoperability, Timelock Encryption, and Delayed Transactions.
 
 #### Coleman Irby
-Coleman Irby graduated in 2015 with his Bachelor's of Science in Electrical Engineering with a focus in Computer Engineering from the University of Mississippi. In 2016, Coleman was hired as a contractor in software engineering. He then spent 6 years working as a software engineer in the Financial Technology sector. During his time he taught himself many different technologies including, but not limited to, Java, C++, React, Angular, Kotlin, Javascript, and many others. In 2022, Coleman then decided to return back to the University of Mississippi to pursue his Masters degree in physics. While pursuing his masters, Coleman has joined as an engineer  at Ideal Labs where he can apply his knowledge in mathematics, scientific modeling, and software engineering to help pioneer the technologies of the future.
+Coleman Irby graduated in 2015 with his Bachelor's of Science in Electrical Engineering with a focus in Computer Engineering from the University of Mississippi. In 2016, Coleman was hired as a contractor in software engineering. He then spent 6 years working as a software engineer in the Financial Technology sector. During his time he taught himself many different technologies including, but not limited to, Java, C++, React, Angular, Kotlin, Javascript, and many others. In 2022, Coleman then decided to return back to the University of Mississippi to pursue his Masters degree in physics. While pursuing his masters, Coleman has joined as an engineer at Ideal Labs where he can apply his knowledge in mathematics, scientific modeling, and software engineering to help pioneer the technologies of the future.
 
 #### Martin Maurer
-Blockchain Developer with experience in Substrate, Rust, and Solidity smart contracts. Game Designer and technical artist with experience in Unity and Unreal Engine. Proficient in 3D modeling, texturing, and animation. Technical Project Manager with experience in Agile methodologies and Scrum at ChainSafe Systems.
+Martin is a blockchain and game developer with experience in Substrate, Rust, and Solidity smart contracts. He has been working as a game designer and technical artist with experience in Unity and Unreal Engine. He is proficient in 3D modeling, texturing, and animation. Currently he is working as a technical project manager with experience in Agile methodologies and Scrum at ChainSafe Systems.
 
 #### Carlos Montoya
-Carlos is a Co-Founder and Blockchain Engineer at Ideal Labs. His career has spanned over two decades, during which he has gathered extensive experience as a serial entrepreneur and software engineer. He has worked both in the realm of corporate software development and in the dynamic world of startups. He has been 5x CTO in companies such StellarEmploy (with exit), TeamClass, AccelEQ, Metatate, and Global MVM. His academic journey includes a Master's degree from Carnegie Mellon University, and most recently he attended the Polkadot Blockchain Academy in Buenos Aires, where Ideal Labs formed.
+Carlos is a co-founder and blockchain engineer at Ideal Labs. His career has spanned over two decades, during which he has gathered extensive experience as a serial entrepreneur and software engineer. He has worked both in the realm of corporate software development and in the dynamic world of startups. He has been 5x CTO in companies such StellarEmploy (with exit), TeamClass, AccelEQ, Metatate, and Global MVM. His academic journey includes a Master's degree from Carnegie Mellon University, and most recently he attended the Polkadot Blockchain Academy in Buenos Aires, where Ideal Labs formed.
 
 #### Tony Riemer
 
-Tony is a co-founder of Ideal Labs, where he is the driving force behind protocol research and development at Ideal Labs. He studied mathematics at the University of Wisconsin, after which he gained experience working as a software engineer in the Fintech space, where he developed cutting edge solutions for Fannie Mae, Capital One, and others. In February 2023, he graduated from the PBA in Buenos Aires alongside the other co-founders of Ideal Labs. Since 2022 he has been fully immersed in everything web3. To date, he has successfully completed several web3 foundation grants and is committed to completing the vision of the "Ideal Network". He has a passion for mathematics, innovation, coffee, and cats. 
+Tony is a co-founder of Ideal Labs, where he is the driving force behind protocol research and development. He studied mathematics at the University of Wisconsin, after which he gained experience working as a software engineer in the Fintech space, where he developed cutting edge solutions for Fannie Mae, Capital One, and others. In February 2023, he graduated from the PBA in Buenos Aires alongside the other co-founders of Ideal Labs. Since 2022 he has been fully immersed in everything web3. To date, he has successfully completed several web3 foundation grants and is committed to completing the vision of the "Ideal Network". He has a passion for mathematics, innovation, coffee, and cats. 
 
 ### Team Code Repos
 All repos can be found under https://github.com/ideal-lab5
@@ -149,7 +146,6 @@ Specifically, we intend to heavily rely on or modify the following repositories:
 ## 5. Development
 
 ### Development Status :open_book:
-
 The Ideal Network is a substrate-based chain with a novel consensus mechanism (as a post finality gadget) enabling publicly verifiable on-chain randomness and timelock encryption. Our development thus far has been exclusively funded by the web3 foundation, both through the open grants program and now as part of the Decentralized Futures initiative: https://medium.com/web3foundation/decentralized-futures-introducing-etf-network-cd8282be6143.
 
 The Ideal Labs github is here: https://github.com/ideal-lab5 where you can find the repositories we will use in developing this proposal, including the [ETF repo](https://github.com/ideal-lab5/etf), [etf.js](https://github.com/ideal-lab5/etf.js), and [etf-sdk](https://github.com/ideal-lab5/etf-sdk).
@@ -159,7 +155,7 @@ Specificially in relation to the milestones you will encounter below, we have al
 You can read more about how it works at: https://medium.com/@ideal_labs/the-etf-post-finality-gadget-1dd6d7f12034
 We have previously built some proof-of-concept games on the Ideal Network, such as: https://ideallabs.substack.com/p/p2p-semi-autonomous-games-part-3?utm_source=profile&utm_medium=reader2
 
-### What are the key milestones for your game's development, and what are the estimated completion dates for each?
+### Key milestones and estimated completion dates
 
 ![overview](https://raw.githubusercontent.com/ideal-lab5/GamesBounty/draft/docs/milestones-overview.png)
 
@@ -177,7 +173,7 @@ We have previously built some proof-of-concept games on the Ideal Network, such 
   - `write_block`: allows a whitelisted relayer to write a block, then verifies the proof
   - `read_block`: read a signature produced for a given block
 
-**Milestone 2:** Verifiable Computations and P.W.E.
+**Milestone 2:** Verifiable Computations and Practical Witness Encryption
 
 The outcome: We introduce a (basic) practical witness encryption scheme and verifiable computation capabilities through the use of Circom and our async committee secret sharing protocol. We note that this is a 'light' version of our protocol, by that meaning we do not plan to introduce a zkSNARK to prove things about the underlying blockchain state (which we plan on doing if this proves successful). We then develop a [simple game using W.E.]. 
 
@@ -196,20 +192,20 @@ We intend to use [circom](https://github.com/iden3/circom), based on work done b
 
 We introduce a new pallet to our runtime that manages and incentivizes participants (likely the network relayers, described in milestone (1)) to verify proofs and to calculate signatures when valid proofs are provided. At a high level, the protocol is as follows:
 
-1. Alice has some secret data that she wants to make available to whoever meets some on-chain condition. She doesn't care who it is. So she encrypts her data with a stream cipher and then prepares a 'resharing' of her secret key to the network validator set. She also develop and compiles a circuit and produces valid public inputs and a verification key. She encodes the input parameters, verification key, and initial resharing of her secret on-chain.
+1. Alice has some secret data that she wants to make available to whoever meets some on-chain condition. She doesn't care who it is. So she encrypts her data with a stream cipher and then prepares a 'resharing' of her secret key to the network validator set. She also develops and compiles a circuit and produces valid public inputs and a verification key. She encodes the input parameters, verification key, and initial resharing of her secret on-chain.
 2. Bob is able to construct a proof that satisfies Alice's circuit. He then uses the public paramters to create a proof (zkSNARK) that satisfies Alice's on-chain condition. 
 > note: Our initial iteration of this concept will be likely be a proof of knowledge of something unrelated to the blockchain state, such as knowing the answer to a riddle. Ultimately, we will extend this concept to allow for general proofs about on-chain conditions based on the public block hash.
 3. Bob encrypts his proof for a future block and submits the payload via an extrinsic. This is added to a queue that will be processed in the next step.
 > a quick aside: the reason timelock encryption is used is to ensure that network authorities produce signatures for Bob at the same time. We don't want Bob to have to trawl through signatures of different blocks to try to identify the valid ones. We also don't want validators to be able to cherry-pick which proofs they verify. By forcing validators to run timelock decryption, they are incentivized to verify it due to the extra work involved in decryption.
-4. We assume the beacon pallet is implemented in the network. We implement an offchain worker that reads the latest signatures from the beacon and uses them to decrypt proofs, verify them, and then outputs a threshold BLS signature. They do this in a way that lets Bob easily identify the signatures he needs to interpolate as well as ensure that only Bob can use the resulting signature to decrypt the Payload.
+4. We assume the beacon pallet is implemented in the network. We implement an offchain worker that reads the latest signatures from the beacon and uses them to decrypt proofs, verifies them, and then outputs a threshold BLS signature. They do this in a way that lets Bob easily identify the signatures he needs to interpolate as well as ensure that only Bob can use the resulting signature to decrypt the Payload.
 
-In the context of Web3 gaming, we want process game states offchain and prove the computation on-chain. We can use the same approach that we described above with a little twist. Alice's payload, in this case, would in fact be some type of reward, likely a monetary one, or rather would give the executor access to account in which that reward exists. We use this idea to incentivize relayers to udpate game states. 
+In the context of Web3 gaming, we want to process game states offchain and prove the computation on-chain. We can use the same approach that we described above with a little twist. Alice's payload, in this case, would in fact be some type of reward, likely a monetary one, or rather would give the executor access to account in which that reward exists. We use this idea to incentivize relayers to update game states. 
 
 **Milestone 3**: 
 
 ![](https://raw.githubusercontent.com/ideal-lab5/GamesBounty/draft/docs/milestone3.png)
 
-The final milestone re-imagines a game previously implemented using Dojo (starknet) and implements it as a substrate-native game instead. [Arcane Assembly](https://github.com/ArcaneAssemblers/spellcrafter) is a single player time and resource management survival game. You play as a mage trying to craft the most powerful spell the world has ever seen. Spells are crafted by sourcing and adding rare components from across the world.
+The final milestone re-imagines a game previously implemented using Dojo (starknet) and implements it as a substrate-native game instead. [Spellcrafter](https://github.com/ArcaneAssemblers/spellcrafter) is a single player time and resource management survival game. You play as a mage trying to craft the most powerful spell the world has ever seen. Spells are crafted by sourcing and adding rare components from across the world.
 
 First we reimplement the contracts (for example, [this one](https://github.com/ArcaneAssemblers/spellcrafter/blob/main/contracts/src/systems.cairo#L69C14-L69C15)) as ink! contracts, we also use the Ideal network's randomness within the game, for example replacing [this line](https://github.com/ArcaneAssemblers/spellcrafter/blob/cfe1cc3f45e434da4715177bca1d674214959b61/contracts/src/systems.cairo#L69C14-L69C15) with a call to get randomness from a beacon pallet instead.
 
@@ -224,7 +220,7 @@ Players find ingredients through Twitter clues leading to URLs. For example:
 
 Players use the knowledge learned here to 'claim' ingredients later on when attempting to unlock a recipe. 
 
-**2. Arcane Assembler (Crafting System)**
+**2. Spellcrafter (Crafting System)**
 Players use collected "ingredients" and "recipes" to craft spells. To craft a spell, a player must first unlock the recipe. Recipes are encrypted using our practical witness encryption scheme. Using this, players can only unlock recipes if they can prove they have solved some set of challenges. 
 
 Crafting Process:
@@ -239,11 +235,11 @@ Example Spells:
 - Healing Waters: Requires Mermaid Tear, Moon Blossom, Crystal Shard.
 
 **3. Spell Usage and Progression**
-Spell Usage: Spells are minted and sold as NFTs.
+Spells are minted and sold as NFTs. They can be implemented in other games that require spells. Players can also sell them on the marketplace like any other NFT for financial gain.
 
 Example NFT Sales:
 
-Craft Firestorm Spell (mint as NFT) => list for sale.
+Spell Uswwage: Craft Firestorm Spell (mint as NFT) => list for sale.
 
 Progression: Earning in-game currency or rewards to:
 - Buy better foraging tools.
@@ -319,9 +315,9 @@ There are no plans to raise additional funds right now, but we are open to discu
 | 2. | BSA | We will create an Blockchain Solution Architecture (BSA) showing the proper interaction of the game with the Blockchain elements. This will mostly be known as an output of milestone 2, however we will formalize the documentation here. |
 | 3. | Circuit Implementation | We implement the circuits behind each of the 'recipes'. We will precompile the circuits and make them openly available to players. |
 | 4. | Game Contracts Reimplementation | We reimplement the game as a series of ink! smart contracts instead of starknet contracts. We also use the Beacon pallet's randomness within the contract (e.g. when minting an NFT, we randomly assign an id). |
-| 5. | Asset Creation | We repurpose the assets from the original Arcane Assembly game and ensure their availability. We do not plan on creating new assets. |
-| 6. | Front End: Game Interface | We develop an interface that allows for the game to be played. This will likely be a browser based interface to being, but that is TBD. Players will (likely) be required to either have Metamask or the Polkdadotjs extension installed and enabled. |
-| 7. | Launch and Deploy | We launch the game on the Ideal network's testnet. | 
+| 5. | Asset Creation | We repurpose the assets from the original Arcane Assembly game and ensure their availability. We might create some new assets where appropriate. |
+| 6. | Front End: Game Interface | We develop an interface that allows for the game to be played. This will likely be a browser based interface, but that is TBD. We exploring different platforms like Telegram and Discord, to find the ideal fit for the game. Players will very (likely) be required to either have Metamask or the Polkdadotjs extension installed in the initial version of the game. Future versions should be able to mimic account abstraction as existing on Ethereum to simplify on-boarding of non-crypto-native audiences. |
+| 7. | Launch and Deploy | We launch the game on the Ideal network's testnet. ChainSafe will provide any required server infrastructure for the operation of the game. | 
 
 ## 7. Future Plans
 
@@ -331,7 +327,7 @@ Please include here
   - Ideal Labs has been funded completely by non-dilutive grants. At present we have no specific plans for securing external, dilutive funding (e.g. V.C. funding), however, long-term maintenance and development of the project will depend on the success of our current participation in the [Decentralized Futures program](https://medium.com/web3foundation/decentralized-futures-introducing-etf-network-cd8282be6143) as well as the outcomes of our work on this proposal. We may seek external funding if needed, otherwise we will attempt to remain bootstrapped as long as possible, potentially seeking funds from the community via the Kusama treasury or Polimec.
 
 - how you intend to use, enhance, and promote your project in the short term, and
-  - In terms of gaming, we intend to use the framework we develop to create new web3 gaming solutions for Substrate/Polkadot based chains. Specifically, we want to develop fully on-chain games based on novel cryptographic solutions (e.g. circom for zksnarks, on-chain simulations based on markov chains that receive random inputs, or other crazy ideas). We want to approach web3 game developers and introduce them to these new capabilities in order to draw more focus to Polkadot's capabilities for web3 gaming (which we will do by showcasing our game).
+  - In terms of gaming, we intend to use the framework we develop to create new web3 gaming solutions for Substrate/Polkadot based chains. Specifically, we want to develop fully on-chain games based on novel cryptographic solutions (e.g. circom for zksnarks, on-chain simulations based on markov chains that receive random inputs, or other ambitious ideas). We want to approach web3 game developers and introduce them to these new capabilities in order to draw more focus to Polkadot's capabilities for web3 gaming (which we will do by showcasing our game).
   - We are refining our roadmap for ways in which we can improve the network and user experience. We are researching the implementation of a [powers of tau](https://eprint.iacr.org/2017/1050.pdf) ceremony using our randomness beacon, allowing users to avoid running the powers of tau ceremony locally, which is costly and time consuming while also being a potential vulnerability.
 
 - the team's long-term plans and intentions in relation to it.
@@ -341,8 +337,6 @@ Please include here
   - The team is also committed to non-gaming aspects of the project, which in a more general sense is the development of an on-chain 'randomness market', where individual entities (smart contracts, other chains, whoever) can bid to consume randomness from the network in an auction-based system.
 
 ## 8. Additional Information :heavy_plus_sign:
-
-### While we've covered a range of topics, there might still be questions or areas of uncertainty on your side or ours. We encourage you to share any additional thoughts, questions, or concerns you may have, with us.
 
 ### How did you hear about the Grants Program?
 - [ ] Polkadot Play Website
