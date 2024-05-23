@@ -223,7 +223,8 @@ Players find ingredients through Twitter clues leading to URLs. For example:
 
 Players use the knowledge learned here to 'claim' ingredients later on when attempting to unlock a recipe. 
 
-**2. Spellcrafter (Crafting System)**
+**2. SpellCrafter (Crafting System)**
+
 Players use collected "ingredients" and "recipes" to craft spells. To craft a spell, a player must first unlock the recipe. Recipes are encrypted using our practical witness encryption scheme. Using this, players can only unlock recipes if they can prove they have solved some set of challenges. 
 
 Crafting Process:
