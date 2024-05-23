@@ -15,7 +15,8 @@
 
 > This is not only a pitch for a game, but for enabling verifiable onchain randomness, tlock, and verifiable computations for web3 games. The final output of this proposal will be a game, which Ideal Labs will develop in collaboration with Chainsafe Systems. 
 
-**SpellCrafter** is a "spell-crafting" card game where players discover ingredients, unlock recipes, and craft new spells in a challenge to be the most powerful mage. Players encounter offchain challenges (puzzles) that must be solved in order to unlock new recipes that can be used to craft spells on-chain. This game is a re-imagining of [Arcane Assembly](https://github.com/ArcaneAssemblers/spellcrafter), a game developed with Dojo (on Starknet), as a Substrate-native game. Even though a game in it's own right, Spellcrafter is intended to be a used as a source of magic spells for other games that need them for their players. In the game, players must search the web, offchain, in order to learn knowledge that they can use to unlock recipes, such as by solving a puzzle or a riddle. 
+**SpellCrafter** is a "spell-crafting" card game where players discover ingredients, unlock recipes, and craft new spells in a challenge to be the most powerful mage. Players encounter offchain challenges (puzzles) that must be solved in order to unlock new recipes that can be used to craft spells on-chain. This game is a re-imagining of [Arcane Assembly](https://github.com/ArcaneAssemblers/spellcrafter), a game developed with Dojo (on Starknet), as a Substrate-native game. Even though a game in it's own right, SpellCrafter is intended to be a used as a source of magic spells for other games that need them for their players. In the game, players must search the web, offchain, in order to learn knowledge that they can use to unlock recipes, such as by solving a puzzle or a riddle. 
+
 
 To enable SpellCrafter on Substrate, we introduce publicly verifiable on-chain randomness, timelock encryption, verifiable computation (zkSNARKs) and practical witness encryption capabilities to web3 gaming on Polkadot/Substrate. In collaboration with ChainSafe Gaming, Ideal Labs aims to enhance web3 gaming on Polkadot by leveraging the Ideal Network's [post-finality gadget](https://medium.com/@ideal_labs/the-etf-post-finality-gadget-1dd6d7f12034), an MPC solution that enables a randomness beacon, to develop a practical witness encryption mechanism. That is, it enables the usage of verifiable randomness on-chain (and across chains), allows for messages to be locked for future blocks, and provides secret sharing capabilities, wherein the network acts as a distributed key generator and constructs keys for 'authorized' users (where authorization is gated behind valid proofs). This approach ensures fair play, enables asynchronous player coordination, and introduces proof-of-knowledge gating for in-game assets, events, or anything. This would not only allow for games like [zkHunt](https://0xparc.org/blog/zk-hunt) or [dark forest](https://zkga.me/) to be implemented on Substrate, but would allow for new on-chain conditional data access mechanisms to be created, such as requiring a zkSNARK of some in-game knowledge in order to proceed to the next level.
 
@@ -42,7 +43,8 @@ flowchart LR
 
 ### Are there any existing games that you would consider similar to your project?
 
-Spellcrafter exists as a Starknet implementation built with the Dojo framework. There are several existing 'autonomous worlds' frameworks that enable some type of verifiable computation and/or automatic game state calcualtions and updates. Each solutions is generally targeting EVM-based blockchains, including:
+SpellCrafter exists as a Starknet implementation built with the Dojo framework. There are several existing 'autonomous worlds' frameworks that enable some type of verifiable computation and/or automatic game state calcualtions and updates. Each solutions is generally targeting EVM-based blockchains, including:
+
 - [dojo](https://book.dojoengine.org/)
 - [mud](https://mud.dev/)
 - [xaya](https://xaya.io/)
@@ -208,7 +210,8 @@ We introduce a new pallet to our runtime that manages and incentivizes participa
 
 ![](https://raw.githubusercontent.com/ideal-lab5/GamesBounty/draft/docs/milestone3.png)
 
-The final milestone re-imagines a game previously implemented using Dojo (Starknet) and implements it as a Substrate-native game instead. [Spellcrafter](https://github.com/ArcaneAssemblers/spellcrafter) is a single player time and resource management survival game. You play as a mage trying to craft the most powerful spell the world has ever seen. Spells are crafted by sourcing and adding rare components from across the world.
+The final milestone re-imagines a game previously implemented using Dojo (Starknet) and implements it as a Substrate-native game instead. [SpellCrafter](https://github.com/ArcaneAssemblers/spellcrafter) is a single-player time and resource management survival game. You play as a mage trying to craft the most powerful spell the world has ever seen. Spells are crafted by sourcing and adding rare components from across the world.
+
 
 First we reimplement the contracts (for example, [this one](https://github.com/ArcaneAssemblers/spellcrafter/blob/main/contracts/src/systems.cairo#L69C14-L69C15)) as ink! contracts, we also use the Ideal Network's randomness within the game, for example replacing [this line](https://github.com/ArcaneAssemblers/spellcrafter/blob/cfe1cc3f45e434da4715177bca1d674214959b61/contracts/src/systems.cairo#L69C14-L69C15) with a call to get randomness from a beacon pallet instead.
 
