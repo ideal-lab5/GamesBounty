@@ -180,7 +180,8 @@ The outcome: We introduce a (basic) practical witness encryption scheme and veri
 
 **Note**: In the future, we will investigate the potential for the Ideal Network's randomness beacon to enable a decentralized, on-chain powers of tau ceremony, which is required when creating the verification keys for zkSNARKS (Groth16). This will ensure that users do not need to produce their own verification keys offchain, greatly increasing the usability of the system. This will allow any chain in the ecosystem to easily introduce zkSNARK capabilities.
 
-The goal of milestone two is to enable a mechanism where the Ideal network is capable of sharing secrets between async and anonymous participants. That is, we propose an MPC solution that uses zkSNARKS and our threshold BLS signature scheme to introduce an on-chain conditional access control mechanism wherein 'data owners' can define on-chain conditions that gate access to their data. The mechanism that we are proposing could provide value to the ecosystem as a whole, however, we see it as a tremendous value in the context of web3 gaming. 
+The goal of milestone two is to enable a mechanism where the Ideal Network is capable of sharing secrets between async and anonymous participants. That is, we propose an MPC solution that uses zkSNARKS and our threshold BLS signature scheme to introduce an on-chain conditional access control mechanism wherein 'data owners' can define on-chain conditions that gate access to their data. The mechanism that we are proposing could provide value to the ecosystem as a whole, however, we see it as a tremendous value in the context of web3 gaming. 
+
 
 This practical witness encryption capability has great potential to enable interesting new paradigms for web3 games. For example:
 - It could enable conditional access to in-game assets, perhaps certain items are unavailable to a type of character or a only usable if they have reached a certain level.
