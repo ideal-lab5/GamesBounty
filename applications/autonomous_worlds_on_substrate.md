@@ -15,7 +15,8 @@
 
 > This is not only a pitch for a game, but for enabling verifiable onchain randomness, tlock, and verifiable computations for web3 games. The final output of this proposal will be a game, which Ideal Labs will develop in collaboration with Chainsafe Systems. 
 
-**SpellCrafter** is a "spell-crafting" card game where players discover ingredients, unlock recipes, and craft new spells in a challenge to be the most powerful mage. Players encounter offchain challenges (puzzles) that must be solved in order to unlock new recipes that can be used to craft spells on-chain. This game is a re-imagining of [Arcane Assembly](https://github.com/ArcaneAssemblers/spellcrafter), a game developed with Dojo (on Starknet), as a Substrate-native game. Even though a game in it's own right, Spellcrafter is intended to be a used as a source of magic spells for other games that need them for their players. In the game, players must search the web, offchain, in order to learn knowledge that they can use to unlock recipes, such as by solving a puzzle or a riddle. 
+**SpellCrafter** is a "spell-crafting" card game where players discover ingredients, unlock recipes, and craft new spells in a challenge to be the most powerful mage. Players encounter offchain challenges (puzzles) that must be solved in order to unlock new recipes that can be used to craft spells on-chain. This game is a re-imagining of [Arcane Assembly](https://github.com/ArcaneAssemblers/spellcrafter), a game developed with Dojo (on Starknet), as a Substrate-native game. Even though a game in it's own right, SpellCrafter is intended to be a used as a source of magic spells for other games that need them for their players. In the game, players must search the web, offchain, in order to learn knowledge that they can use to unlock recipes, such as by solving a puzzle or a riddle. 
+
 
 To enable SpellCrafter on Substrate, we introduce publicly verifiable on-chain randomness, timelock encryption, verifiable computation (zkSNARKs) and practical witness encryption capabilities to web3 gaming on Polkadot/Substrate. In collaboration with ChainSafe Gaming, Ideal Labs aims to enhance web3 gaming on Polkadot by leveraging the Ideal Network's [post-finality gadget](https://medium.com/@ideal_labs/the-etf-post-finality-gadget-1dd6d7f12034), an MPC solution that enables a randomness beacon, to develop a practical witness encryption mechanism. That is, it enables the usage of verifiable randomness on-chain (and across chains), allows for messages to be locked for future blocks, and provides secret sharing capabilities, wherein the network acts as a distributed key generator and constructs keys for 'authorized' users (where authorization is gated behind valid proofs). This approach ensures fair play, enables asynchronous player coordination, and introduces proof-of-knowledge gating for in-game assets, events, or anything. This would not only allow for games like [zkHunt](https://0xparc.org/blog/zk-hunt) or [dark forest](https://zkga.me/) to be implemented on Substrate, but would allow for new on-chain conditional data access mechanisms to be created, such as requiring a zkSNARK of some in-game knowledge in order to proceed to the next level.
 
@@ -42,7 +43,8 @@ flowchart LR
 
 ### Are there any existing games that you would consider similar to your project?
 
-Spellcrafter exists as a Starknet implementation built with the Dojo framework. There are several existing 'autonomous worlds' frameworks that enable some type of verifiable computation and/or automatic game state calcualtions and updates. Each solutions is generally targeting EVM-based blockchains, including:
+SpellCrafter exists as a Starknet implementation built with the Dojo framework. There are several existing 'autonomous worlds' frameworks that enable some type of verifiable computation and/or automatic game state calcualtions and updates. Each solutions is generally targeting EVM-based blockchains, including:
+
 - [dojo](https://book.dojoengine.org/)
 - [mud](https://mud.dev/)
 - [xaya](https://xaya.io/)
@@ -180,7 +182,8 @@ The outcome: We introduce a (basic) practical witness encryption scheme and veri
 
 **Note**: In the future, we will investigate the potential for the Ideal Network's randomness beacon to enable a decentralized, on-chain powers of tau ceremony, which is required when creating the verification keys for zkSNARKS (Groth16). This will ensure that users do not need to produce their own verification keys offchain, greatly increasing the usability of the system. This will allow any chain in the ecosystem to easily introduce zkSNARK capabilities.
 
-The goal of milestone two is to enable a mechanism where the Ideal network is capable of sharing secrets between async and anonymous participants. That is, we propose an MPC solution that uses zkSNARKS and our threshold BLS signature scheme to introduce an on-chain conditional access control mechanism wherein 'data owners' can define on-chain conditions that gate access to their data. The mechanism that we are proposing could provide value to the ecosystem as a whole, however, we see it as a tremendous value in the context of web3 gaming. 
+The goal of milestone two is to enable a mechanism where the Ideal Network is capable of sharing secrets between async and anonymous participants. That is, we propose an MPC solution that uses zkSNARKS and our threshold BLS signature scheme to introduce an on-chain conditional access control mechanism wherein 'data owners' can define on-chain conditions that gate access to their data. The mechanism that we are proposing could provide value to the ecosystem as a whole, however, we see it as a tremendous value in the context of web3 gaming. 
+
 
 This practical witness encryption capability has great potential to enable interesting new paradigms for web3 games. For example:
 - It could enable conditional access to in-game assets, perhaps certain items are unavailable to a type of character or a only usable if they have reached a certain level.
@@ -195,7 +198,8 @@ We introduce a new pallet to our runtime that manages and incentivizes participa
 
 1. Alice has some secret data that she wants to make available to whoever meets some on-chain condition. She doesn't care who it is. So she encrypts her data with a stream cipher and then prepares a 'resharing' of her secret key to the network validator set. She also develops and compiles a circuit and produces valid public inputs and a verification key. She encodes the input parameters, verification key, and initial resharing of her secret on-chain.
 2. Bob is able to construct a proof that satisfies Alice's circuit. He then uses the public paramters to create a proof (zkSNARK) that satisfies Alice's on-chain condition. 
-> note: Our initial iteration of this concept will be likely be a proof of knowledge of something unrelated to the blockchain state, such as knowing the answer to a riddle. Ultimately, we will extend this concept to allow for general proofs about on-chain conditions based on the public block hash.
+> note: Our initial iteration of this concept will likely be a proof of knowledge of something unrelated to the blockchain state, such as knowing the answer to a riddle. Ultimately, we will extend this concept to allow for general proofs about on-chain conditions based on the public block hash.
+
 3. Bob encrypts his proof for a future block and submits the payload via an extrinsic. This is added to a queue that will be processed in the next step.
 > a quick aside: the reason timelock encryption is used is to ensure that network authorities produce signatures for Bob simultaneously while also ensuring his request is not publicly known before he has been granted or denied access. 
 4. We assume the beacon pallet is implemented in the network. We implement an offchain worker that reads the latest signatures from the beacon and uses them to decrypt proofs, verifies them, and then outputs a threshold BLS signature. They do this in a way that lets Bob easily identify the signatures he needs to interpolate as well as ensure that only Bob can use the resulting signature to decrypt the Payload.
@@ -206,7 +210,8 @@ We introduce a new pallet to our runtime that manages and incentivizes participa
 
 ![](https://raw.githubusercontent.com/ideal-lab5/GamesBounty/draft/docs/milestone3.png)
 
-The final milestone re-imagines a game previously implemented using Dojo (Starknet) and implements it as a Substrate-native game instead. [Spellcrafter](https://github.com/ArcaneAssemblers/spellcrafter) is a single player time and resource management survival game. You play as a mage trying to craft the most powerful spell the world has ever seen. Spells are crafted by sourcing and adding rare components from across the world.
+The final milestone re-imagines a game previously implemented using Dojo (Starknet) and implements it as a Substrate-native game instead. [SpellCrafter](https://github.com/ArcaneAssemblers/spellcrafter) is a single-player time and resource management survival game. You play as a mage trying to craft the most powerful spell the world has ever seen. Spells are crafted by sourcing and adding rare components from across the world.
+
 
 First we reimplement the contracts (for example, [this one](https://github.com/ArcaneAssemblers/spellcrafter/blob/main/contracts/src/systems.cairo#L69C14-L69C15)) as ink! contracts, we also use the Ideal Network's randomness within the game, for example replacing [this line](https://github.com/ArcaneAssemblers/spellcrafter/blob/cfe1cc3f45e434da4715177bca1d674214959b61/contracts/src/systems.cairo#L69C14-L69C15) with a call to get randomness from a beacon pallet instead.
 
@@ -221,7 +226,8 @@ Players find ingredients through Twitter clues leading to URLs. For example:
 
 Players use the knowledge learned here to 'claim' ingredients later on when attempting to unlock a recipe. 
 
-**2. Spellcrafter (Crafting System)**
+**2. SpellCrafter (Crafting System)**
+
 Players use collected "ingredients" and "recipes" to craft spells. To craft a spell, a player must first unlock the recipe. Recipes are encrypted using our practical witness encryption scheme. Using this, players can only unlock recipes if they can prove they have solved some set of challenges. 
 
 Crafting Process:
@@ -295,7 +301,8 @@ There are no plans to raise additional funds right now, but we are open to discu
 | 0e. | Article | We will publish an **article**/workshop that explains [...] (what was done/achieved as part of the games bounty). (Content, language, and medium should reflect your target audience described above.) |
 | 1. | Library: Etf.js - SnarkJS support | We modify the etf.js library to use the [snarkJS](https://github.com/iden3/snarkjs) library to prepare witness files with new inputs on pre-compiled circuits. This will allow users/players to easily prepare and verify proofs within the frontend. |
 | 2. | Substrate Runtime: zkSNARK integration | We integrate the [the zkSnark pallet](https://github.com/bright/zk-snarks-with-Substrate/tree/main/pallets/zk-snarks) into our runtime. |
-| 3. | Substrate Runtime: pallet-witness-encryption | We develop a new pallet for enabling practical on-chain witness encryption. The pallet functions as described above, where users encode public parameters for circuits and resharings of the associated secret in a pallet, which is then associated with a new on-chain asset class. We also implement the OCW logic to enable the distributed key generation mechanism. We leverage the acss scheme already implemented in the Ideal network [here](https://github.com/ideal-lab5/etf-sdk/blob/w3fbls-migration/etf-crypto-primitives/src/dpss/acss.rs). |
+| 3. | Substrate Runtime: pallet-witness-encryption | We develop a new pallet for enabling practical on-chain witness encryption. The pallet functions as described above, where users encode public parameters for circuits and resharings of the associated secret in a pallet, which is then associated with a new on-chain asset class. We also implement the OCW logic to enable the distributed key generation mechanism. We leverage the acss scheme already implemented in the Ideal Network [here](https://github.com/ideal-lab5/etf-sdk/blob/w3fbls-migration/etf-crypto-primitives/src/dpss/acss.rs). |
+
 | 4. |  Demo Game: Riddle challenge game | We develop a basic demonstration of secret sharing gated by knowledge of the solution of a riddle (e.g. Q: 'What gets wet as it dries?', A: 'A towel'). This forms the basis for players to unlock new recipes in the next milestone. With each riddle solved, a player is able to unlock a secret message. The game is won when a player can guess a secret phrase formed by the messages. |
 
 ### Milestone 3: Game Development
